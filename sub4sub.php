@@ -8,6 +8,7 @@ require_once("sdata-modules.php");
  * @Last Modified time: Bandung, 2018-10-21
 */
 first:
+echo "Masukkan URL Channel : ";$config['ytid'] = trim(fgets(STDIN));
 echo "Masukkan Jumlah Worker : ";$config['worker'] = trim(fgets(STDIN));
 echo "Masukkan Jeda Waktu    : ";$config['sleep'] = trim(fgets(STDIN));
 echo "Target Points          : ";$config['target'] = trim(fgets(STDIN));
@@ -15,6 +16,12 @@ if(empty($config['worker']) or empty($config['sleep'])){
     echo "\033[31mError : \033[0m Anda belum memasukan jumlah worker/jeda waktu\n";
     goto first;
 }
+        $exx = explode("/",$config['ytid']);
+        if (stripos($exx[4],"?")) {
+        $ytid = substr($exx[4], 0, strpos($exx[4], "?"));
+        }else{
+        $ytid = $exx[4];
+        }
 	$url 	= array(); 
 	for ($i=0; $i <$config['worker']; $i++) { 
         $urls[] = array(
@@ -28,11 +35,11 @@ if(empty($config['worker']) or empty($config['sleep'])){
                 "Host: zlcodesyt.websiteseguro.com",
                 "cache-control: no-cache"
                         ),
-            'post' => '#tipo:5#<->#UCfYVwkCJnT5XtJwEm-Lx-Zg'
+            'post' => '#tipo:5#<->#$ytid'
           );
     }
     while(TRUE){
-    echo "\nWorker : ".$config['worker']."\n";
+    echo "\nChannel ID : $ytid\nWorker : ".$config['worker']."\n";
     $respons = $sdata->sdata($urls , $headers);
     foreach ($respons as $key => $value) {
         //$rjson = json_decode($value[respons],true);
@@ -57,7 +64,7 @@ if(empty($config['worker']) or empty($config['sleep'])){
       CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => "#tipo:7#<->#UCfYVwkCJnT5XtJwEm-Lx-Zg #####tk:ya29.Gls9BsDwQDqUZAKzj0z4qnwMNHBNtZD6kr2Ze1UtcdXPqGLP5_Jz6eNRwa-jvi9phW1mlZUVxMHQnLblMumL0pVTewlRPNZ8_Fi8lgdA7WBuAiR037BNFROOFRlY#",
+      CURLOPT_POSTFIELDS => "#tipo:7#<->#$ytid #####tk:ya29.Gls9BsDwQDqUZAKzj0z4qnwMNHBNtZD6kr2Ze1UtcdXPqGLP5_Jz6eNRwa-jvi9phW1mlZUVxMHQnLblMumL0pVTewlRPNZ8_Fi8lgdA7WBuAiR037BNFROOFRlY#",
       CURLOPT_HTTPHEADER => array(
         "Connection: Keep-Alive",
         "Host: zlcodesyt.websiteseguro.com",
