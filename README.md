@@ -11,14 +11,11 @@ Install Command
 
 ```sh
 $ git clone https://github.com/meetdani/subs4subs-bot.git
-$ cd cryptocnets-bot
+$ cd subs4subs-bot
 ```
 ### Configuration
 Open your SUB4SUB APP.
 Login using ur google account/contains yotube channel
-
-### Docs/Manual
-Will be updated soon
 
 ### How To Run
 
