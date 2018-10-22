@@ -35,7 +35,7 @@ if(empty($config['worker']) or empty($config['sleep'])){
                 "Host: zlcodesyt.websiteseguro.com",
                 "cache-control: no-cache"
                         ),
-            'post' => '#tipo:5#<->#$ytid'
+            'post' => '#tipo:5#<->#'.$ytid.''
           );
     }
     while(TRUE){
@@ -64,7 +64,7 @@ if(empty($config['worker']) or empty($config['sleep'])){
       CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => "#tipo:7#<->#$ytid #####tk:ya29.Gls9BsDwQDqUZAKzj0z4qnwMNHBNtZD6kr2Ze1UtcdXPqGLP5_Jz6eNRwa-jvi9phW1mlZUVxMHQnLblMumL0pVTewlRPNZ8_Fi8lgdA7WBuAiR037BNFROOFRlY#",
+      CURLOPT_POSTFIELDS => "#tipo:7#<->#".$ytid." #####tk:ya29.Gls9BsDwQDqUZAKzj0z4qnwMNHBNtZD6kr2Ze1UtcdXPqGLP5_Jz6eNRwa-jvi9phW1mlZUVxMHQnLblMumL0pVTewlRPNZ8_Fi8lgdA7WBuAiR037BNFROOFRlY#",
       CURLOPT_HTTPHEADER => array(
         "Connection: Keep-Alive",
         "Host: zlcodesyt.websiteseguro.com",
