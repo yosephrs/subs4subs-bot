@@ -34,5 +34,4 @@ Thanks goes to these wonderful dev ❤️ :
 
 ### Issues 
 > Please report this problem through the issue page [Create New Issue] (https://github.com/meetdani/sub4sub/issues)
-# sub4sub
 
